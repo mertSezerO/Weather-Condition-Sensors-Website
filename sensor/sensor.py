@@ -2,11 +2,10 @@ import threading
 import queue
 from abc import ABC, abstractmethod
 
-#add sender thread to sensor class for sending process
 class Sensor:
-    def __init__(self, log_queue: queue.Queue, send_queue: queue.Queue) -> None:
-        self.log_queue =  log_queue
-        self.send_queue = send_queue
+    def __init__(self) -> None:
+        self.log_queue =  queue.Queue()
+        self.send_queue = queue.Queue()
         self.logger_thread = self.create_logger()
         self.sender_thread = self.create_sender()
     

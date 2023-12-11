@@ -1,7 +1,5 @@
 import random
 import time
-import threading
-import queue
 
 from util import logging
 from client import client_TCP
@@ -9,9 +7,8 @@ from .sensor import Sensor
 
 class TemperatureSensor(Sensor):
     def __init__(self, host, port):
-        Sensor.__init__(self=self, log_queue=queue.Queue(), send_queue=queue.Queue())
+        Sensor.__init__(self=self)
         self.socket = client_TCP.ClientTCP(host, port).socket
-        self.start()
     
     def start(self):
         self.sender_thread.start()
