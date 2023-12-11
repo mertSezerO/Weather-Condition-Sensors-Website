@@ -28,5 +28,5 @@ class TemperatureSensor(Sensor):
         return random.randint(20,30)
         
     def send(self, temp: int):
-        client_TCP.socket.send(str(temp).encode('utf-8'))
+        self.client.socket.send(str(temp).encode('utf-8'))
         self.log_queue.put((logging.send_temperature_log, {"temp": temp}))
