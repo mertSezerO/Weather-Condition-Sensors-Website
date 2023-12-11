@@ -1,3 +1,3 @@
-from temperature_sensor import TemperatureSensor
+from sensor.temperature_sensor import TemperatureSensor
 
 sensor = TemperatureSensor("host",8080)

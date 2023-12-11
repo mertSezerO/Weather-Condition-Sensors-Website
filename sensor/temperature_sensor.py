@@ -5,36 +5,28 @@ import queue
 
 from util import logging
 from client import client_TCP
+from .sensor import Sensor
 
-class TemperatureSensor:
+class TemperatureSensor(Sensor):
     def __init__(self, host, port):
-        self.client = client_TCP.ClientTCP(host, port, task=self.send_temperature)
-        self.log_queue = queue.Queue()
+        Sensor.__init__(self, queue=queue.Queue())
+        self.client = client_TCP.ClientTCP(host, port, task=self.send)
         self.logger_thread = self.create_logger()
         self.start()
-    
-    def create_logger(self) -> threading.Thread:
-        logger_thread = threading.Thread(target=self.log)
-        return logger_thread
     
     def start(self):
         self.logger_thread.start()
         while True:
             start_time = time.time()
-            temperature = self.generate_temperature()
-            self.send_temperature(temperature)
+            temperature = self.generate()
+            self.client.start()
             elapsed_time = time.time() - start_time
             sleep_time = max(0, 1 - elapsed_time)
             time.sleep(sleep_time)
             
-    def generate_temperature(self) -> int:
+    def generate(self) -> int:
         return random.randint(20,30)
         
-    def send_temperature(self, temp: int):
+    def send(self, temp: int):
         client_TCP.socket.send(str(temp).encode('utf-8'))
         self.log_queue.put((logging.send_temperature_log, {"temp": temp}))
-    
-    def log(self):
-        while True:
-            log_task, args = self.log_queue.get()
-            log_task(**args)
