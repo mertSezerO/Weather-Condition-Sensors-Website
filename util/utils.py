@@ -9,11 +9,11 @@ logging.basicConfig(filename="logs.log",
                     )
 logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
 
-def send_temperature_log(temp: int):
-    logging.info(f"Temperature value sent to Gateway: {temp}")
+def send_temperature_log(temperature: int):
+    logging.info(f"Temperature value sent to Gateway: {temperature}")
     
-def send_humidity_log(hum: int):
-    logging.info(f"Humidity value sent to Gateway: {hum}")
+def send_humidity_log(humidity: int):
+    logging.info(f"Humidity value sent to Gateway: {humidity}")
 
 def send_alive():
     logging.info(f"ALIVE message sent to Gateway")
