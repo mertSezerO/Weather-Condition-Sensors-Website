@@ -42,8 +42,12 @@ class HumiditySensor(Sensor):
     
     def send_alive(self):
         while True:
-            time.sleep(3)
+            alive_time = time.time()
+            self.client.socket.send("ALIVE".encode('utf-8'))
             self.log_queue.put((logging.send_alive, {}))
+            elapsed_time = time.time() - alive_time
+            sleep_time = max(0, 3 - elapsed_time)
+            time.sleep(sleep_time)
         
  
         

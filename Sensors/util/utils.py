@@ -1,7 +1,7 @@
 import logging
 import sys
 
-logging.basicConfig(filename="logs.log",
+logging.basicConfig(filename="logs_sensors.log",
                     filemode='a',
                     format='%(asctime)s, %(levelname)s %(message)s',
                     datefmt='%H:%M:%S',
