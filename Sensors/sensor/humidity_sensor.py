@@ -37,7 +37,7 @@ class HumiditySensor(Sensor):
             data = self.send_queue.get()
             humidity = data.get("humidity", None)
             if humidity > 80:
-                self.client.socket.send(str(humidity).encode('utf-8'))
+                self.client.socket.send(humidity.encode('utf-8'))
                 self.log_queue.put((logging.send_humidity_log, {"humidity": humidity}))
     
     def send_alive(self):
