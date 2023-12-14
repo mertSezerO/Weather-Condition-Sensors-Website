@@ -12,7 +12,7 @@ class HumiditySensor(Sensor):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.host = host
         self.port = port
-        self.alive_thread = self.create_alive_thread()
+        self.create_alive_thread()
 
     def start(self):
         self.sender_thread.start()
@@ -28,8 +28,7 @@ class HumiditySensor(Sensor):
             time.sleep(sleep_time)
 
     def create_alive_thread(self):
-        alive_thread = threading.Thread(target=self.send_alive)
-        return alive_thread
+        self.alive_thread = threading.Thread(target=self.send_alive)
     
     def generate(self):
         return random.randint(40,90)

@@ -6,8 +6,8 @@ class Sensor:
     def __init__(self) -> None:
         self.log_queue =  queue.Queue()
         self.send_queue = queue.Queue()
-        self.logger_thread = self.create_logger()
-        self.sender_thread = self.create_sender()
+        self.create_sender()
+        self.create_logger()
     
     @abstractmethod
     def start(self):
@@ -22,12 +22,10 @@ class Sensor:
         pass
     
     def create_sender(self):
-        sender_thread = threading.Thread(target=self.send)
-        return sender_thread
+        self.sender_thread = threading.Thread(target=self.send)
     
-    def create_logger(self) -> threading.Thread:
-        logger_thread = threading.Thread(target=self.log)
-        return logger_thread
+    def create_logger(self):
+        self.logger_thread = threading.Thread(target=self.log)
     
     def log(self):
         while True:

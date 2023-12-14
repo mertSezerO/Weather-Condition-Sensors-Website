@@ -9,6 +9,7 @@ class Gateway:
     def __init__(self, host, port_temp, port_hum):
         self.log_queue =  queue.Queue()
         self.send_queue = queue.Queue() 
+        
         self.temperature_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.temperature_socket.bind((host, port_temp))
         self.temperature_socket.listen(1)
@@ -16,11 +17,12 @@ class Gateway:
         self.humidity_socket = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
         self.humidity_socket.bind((host, port_hum))
         
-        self.humidity_listener_thread = self.create_humidity_listener()
-        self.temperature_listener_thread = self.create_temperature_listener()
-        self.logger_thread = self.create_logger()
-        self.temperature_clock_thread = self.create_temperature_clock()
-        self.humidity_clock_thread = self.create_humidity_clock()
+        self.create_humidity_listener()
+        self.create_temperature_listener()
+        self.create_logger()
+        self.create_temperature_clock()
+        self.create_humidity_clock()
+        
         self.temperature_alive = False
         self.humidity_alive = False
         self.temperature_terminated = False
@@ -34,25 +36,20 @@ class Gateway:
         self.humidity_clock_thread.start()
         self.temperature_clock_thread.start()
         
-    def create_humidity_listener(self) -> threading.Thread:
-        humidity_listener_thread = threading.Thread(target=self.listen_humidity)
-        return humidity_listener_thread
+    def create_humidity_listener(self):
+        self.humidity_listener_thread = threading.Thread(target=self.listen_humidity)
     
-    def create_temperature_listener(self) -> threading.Thread:
-        temperature_listener_thread = threading.Thread(target=self.listen_temperature)
-        return temperature_listener_thread
+    def create_temperature_listener(self):
+        self.temperature_listener_thread = threading.Thread(target=self.listen_temperature)
         
-    def create_logger(self) -> threading.Thread:
-        logger_thread = threading.Thread(target=self.log)
-        return logger_thread
+    def create_logger(self):
+        self.logger_thread = threading.Thread(target=self.log)
     
     def create_humidity_clock(self):
-        clock_thread = threading.Thread(target=self.start_humidity_clock)
-        return clock_thread
+        self.humidity_clock_thread = threading.Thread(target=self.start_humidity_clock)
     
     def create_temperature_clock(self):
-        clock_thread = threading.Thread(target=self.start_temperature_clock)
-        return clock_thread
+        self.temperature_clock_thread = threading.Thread(target=self.start_temperature_clock)
 
     def listen_humidity(self):
         while True:
@@ -112,4 +109,3 @@ class Gateway:
                 self.humidity_alive = False
                 start_time = time_module.time()
         self.log_queue.put((logging.humidity_off_log, {}))
-        
