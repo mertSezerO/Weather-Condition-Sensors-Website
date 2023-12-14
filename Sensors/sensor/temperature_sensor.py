@@ -1,14 +1,17 @@
 import random
 import time
+import socket
 
 from util import logging
-from client import client_TCP
 from .sensor import Sensor
 
 class TemperatureSensor(Sensor):
     def __init__(self, host, port):
         Sensor.__init__(self=self)
-        self.socket = client_TCP.ClientTCP(host, port).socket
+        self.host = host
+        self.port = port
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.socket.connect((self.host, self.port))
     
     def start(self):
         self.sender_thread.start()
@@ -29,5 +32,5 @@ class TemperatureSensor(Sensor):
         while True:
             data = self.send_queue.get()
             temperature = data.get("temperature", None)
-            self.client.socket.send(str(temperature).encode('utf-8'))
+            self.socket.send(str(temperature).encode('utf-8'))
             self.log_queue.put((logging.send_temperature_log, {"temperature": temperature}))

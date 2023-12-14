@@ -1,15 +1,17 @@
 import random
 import time
 import threading
+import socket
 
 from util import logging
-from client import client_UDP
 from .sensor import Sensor
 
 class HumiditySensor(Sensor):
     def __init__(self, host, port):
         Sensor.__init__(self=self)
-        self.socket = client_UDP.ClientUDP(host=host, port=port).socket
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.host = host
+        self.port = port
         self.alive_thread = self.create_alive_thread()
 
     def start(self):
@@ -37,13 +39,13 @@ class HumiditySensor(Sensor):
             data = self.send_queue.get()
             humidity = data.get("humidity", None)
             if humidity > 80:
-                self.client.socket.send(humidity.encode('utf-8'))
+                self.socket.sendto(str(humidity).encode('utf-8'), (self.host,self.port))
                 self.log_queue.put((logging.send_humidity_log, {"humidity": humidity}))
     
     def send_alive(self):
         while True:
             alive_time = time.time()
-            self.client.socket.send("ALIVE".encode('utf-8'))
+            self.socket.sendto(("ALIVE".encode('utf-8')), (self.host,self.port))
             self.log_queue.put((logging.send_alive, {}))
             elapsed_time = time.time() - alive_time
             sleep_time = max(0, 3 - elapsed_time)
