@@ -6,19 +6,17 @@ from util import logging
 import time as time_module
 
 class Gateway:
-    def __init__(self, host, port_temp, port_hum):
+    def __init__(self, host, port_temp, port_hum, port_server):
         self.log_queue =  queue.Queue()
         self.send_queue = queue.Queue() 
         
-        self.temperature_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.temperature_socket.bind((host, port_temp))
-        self.temperature_socket.listen(1)
-        
-        self.humidity_socket = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-        self.humidity_socket.bind((host, port_hum))
-        
+        self.create_temperature_socket(host,port_temp)
+        self.create_humidity_socket(host,port_hum)
+        self.create_server_socket(host,port_server)
+                
         self.create_humidity_listener()
         self.create_temperature_listener()
+        self.create_sender()
         self.create_logger()
         self.create_temperature_clock()
         self.create_humidity_clock()
@@ -41,7 +39,10 @@ class Gateway:
     
     def create_temperature_listener(self):
         self.temperature_listener_thread = threading.Thread(target=self.listen_temperature)
-        
+    
+    def create_sender(self):
+        self.sender = threading.Thread(target=self.send)
+    
     def create_logger(self):
         self.logger_thread = threading.Thread(target=self.log)
     
@@ -51,6 +52,19 @@ class Gateway:
     def create_temperature_clock(self):
         self.temperature_clock_thread = threading.Thread(target=self.start_temperature_clock)
 
+    def create_temperature_socket(self, host, port):
+        self.temperature_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.temperature_socket.bind((host, port))
+        self.temperature_socket.listen(1)
+    
+    def create_humidity_socket(self, host, port):
+        self.humidity_socket = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+        self.humidity_socket.bind((host, port))
+        
+    def create_server_socket(self, host, port):
+        self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server_socket.connect((host,port))
+    
     def listen_humidity(self):
         while True:
             if self.humidity_terminated:
@@ -83,21 +97,7 @@ class Gateway:
     def log(self):
         while True:
             log_task, args = self.log_queue.get()
-            log_task(**args)        
-    
-    def start_temperature_clock(self):
-        start_time = time_module.time()
-        while True:
-            if self.temperature_alive is False:
-                current_time = time_module.time()
-                passed_time = current_time- start_time
-                if passed_time >= 3:
-                    self.temperature_terminated = True
-                    break
-            else:
-                self.temperature_alive = False
-                start_time = time_module.time()
-        self.log_queue.put((logging.temperature_off_log, {}))         
+            log_task(**args)           
     
     def start_humidity_clock(self):
         start_time = time_module.time()
@@ -112,3 +112,20 @@ class Gateway:
                 self.humidity_alive = False
                 start_time = time_module.time()
         self.log_queue.put((logging.humidity_off_log, {}))
+        
+    def start_temperature_clock(self):
+        start_time = time_module.time()
+        while True:
+            if self.temperature_alive is False:
+                current_time = time_module.time()
+                passed_time = current_time- start_time
+                if passed_time >= 3:
+                    self.temperature_terminated = True
+                    break
+            else:
+                self.temperature_alive = False
+                start_time = time_module.time()
+        self.log_queue.put((logging.temperature_off_log, {}))
+        
+    def send(self):
+        pass     
