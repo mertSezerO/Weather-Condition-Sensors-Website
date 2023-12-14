@@ -1,0 +1,19 @@
+21:23:31, INFO Temperature value received by Gateway: 29
+21:23:31, INFO ALIVE message received from humidity sensor
+21:23:32, INFO Temperature value received by Gateway: 23
+21:23:33, INFO Humidity value received by Gateway: 90
+21:23:33, INFO Temperature value received by Gateway: 30
+21:23:34, INFO ALIVE message received from humidity sensor
+21:23:34, INFO Temperature value received by Gateway: 29
+21:23:35, INFO Temperature value received by Gateway: 25
+21:23:36, INFO Temperature value received by Gateway: 22
+21:23:37, INFO ALIVE message received from humidity sensor
+21:23:37, INFO Humidity value received by Gateway: 90
+21:23:37, INFO Temperature value received by Gateway: 21
+21:23:38, INFO Temperature value received by Gateway: 28
+21:23:39, INFO Temperature value received by Gateway: 25
+21:23:40, INFO ALIVE message received from humidity sensor
+21:23:40, INFO Humidity value received by Gateway: 81
+21:23:40, INFO Temperature value received by Gateway: 22
+21:23:43, INFO TEMP SENSOR OFF
+21:23:47, INFO HUMIDITY SENSOR OFF

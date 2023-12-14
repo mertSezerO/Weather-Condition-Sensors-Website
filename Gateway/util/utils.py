@@ -14,7 +14,10 @@ def receive_humidity_log(humidity: int):
 
 def receive_temperature_log(temperature: int):
     logging.info(f"Temperature value received by Gateway: {temperature}")
-    
+
+def receive_alive_log():
+    logging.info(f"ALIVE message received from humidity sensor")
+
 def temperature_off_log():
     logging.info("TEMP SENSOR OFF")
     

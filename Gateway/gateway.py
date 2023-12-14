@@ -59,8 +59,11 @@ class Gateway:
             message,_ = self.humidity_socket.recvfrom(1024)
             message = message.decode('utf-8')
             if message is not None:
-                self.humidity_alive = True
-                self.log_queue.put((logging.receive_humidity_log, {"humidity": message}))
+                if message == "ALIVE":
+                    self.humidity_alive = True
+                    self.log_queue.put((logging.receive_alive_log, {}))
+                else:
+                    self.log_queue.put((logging.receive_humidity_log, {"humidity": message}))
         
     def listen_temperature(self):
         while True:
