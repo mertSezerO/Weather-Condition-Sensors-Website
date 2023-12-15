@@ -15,6 +15,7 @@ class Datum():
     def set_message(self, message: str):
         self.body.message = message
 
+from datetime import datetime
 class Header():
     def __init__(self):
         self._data_type = None
@@ -26,6 +27,7 @@ class Header():
     @data_type.setter
     def data_type(self, type: str):
         self._data_type = type
+        self.timestamp = datetime.now().strftime("%H:%M:%S")
     
 class Body():
     def __init__(self):
