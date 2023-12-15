@@ -6,10 +6,7 @@ from util import logging, Datum
 import time as time_module
 
 class Gateway:
-    def __init__(self, host, port_temp, port_hum, port_server):
-        self.log_queue =  queue.Queue()
-        self.send_queue = queue.Queue() 
-        
+    def __init__(self, host, port_temp, port_hum, port_server):    
         self.create_temperature_socket(host,port_temp)
         self.create_humidity_socket(host,port_hum)
         self.create_server_socket(host,port_server)
@@ -41,9 +38,11 @@ class Gateway:
         self.temperature_listener_thread = threading.Thread(target=self.listen_temperature)
     
     def create_sender(self):
+        self.send_queue = queue.Queue()
         self.sender = threading.Thread(target=self.send)
     
     def create_logger(self):
+        self.log_queue =  queue.Queue()
         self.logger_thread = threading.Thread(target=self.log)
     
     def create_humidity_clock(self):
