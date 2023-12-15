@@ -1,6 +1,7 @@
 import threading
 import queue
 import socket
+import json
 
 from util import logging, Datum
 import time as time_module
@@ -30,6 +31,7 @@ class Gateway:
         self.logger_thread.start()
         self.humidity_clock_thread.start()
         self.temperature_clock_thread.start()
+        self.sender.start()
         
     def create_humidity_listener(self):
         self.humidity_listener_thread = threading.Thread(target=self.listen_humidity)
@@ -151,15 +153,39 @@ class Gateway:
         datum.set_body_type(body_type)
         datum.set_value(value)
         datum.set_message(f"{body_type} is now {value}")
-        self.server_socket.send(datum)
+        
+        datum_json = json.dumps({
+            'header': {
+                'data_type': datum.header.data_type,
+                'timestamp': datum.header.timestamp
+            },
+            'body': {
+                'data_type': datum.body.data_type,
+                'value': datum.body.value,
+                'message': datum.body.message
+            }
+        })
+        self.server_socket.send(datum_json.encode())
         self.log_queue.put((logging.send_weather_info_log, {}))
+        
     
     def _send_sensor_info(self, body_type):
         datum = Datum()
         datum.set_header_type("sensor info")
         datum.set_body_type(body_type)
         datum.set_message(f"{body_type} Sensor OFF")
-        self.server_socket.send(datum)
+        
+        datum_json = json.dumps({
+            'header': {
+                'data_type': datum.header.data_type,
+                'timestamp': datum.header.timestamp
+            },
+            'body': {
+                'data_type': datum.body.data_type,
+                'message': datum.body.message
+            }
+        })
+        self.server_socket.send(datum_json.encode())
         self.log_queue.put((logging.send_sensor_info_log, {}))
 
             
