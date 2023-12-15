@@ -38,6 +38,8 @@ class CustomRequestHandler(SimpleHTTPRequestHandler):
 
 class Server:    
     def __init__(self, host='localhost', port=8080):
+        self.store_queue = queue.Queue()
+        
         #self.create_gateway_socket()
         self.create_http_socket()
         
@@ -59,17 +61,14 @@ class Server:
     def create_http_socket(self):
         self.http_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     
-    #def create_gateway_listener(self):
-    #   self.gateway_listener = threading.Thread(target=self.listen)
+    def create_gateway_listener(self):
+        self.gateway_listener = threading.Thread(target=self.listen_gateway)
     
-    #def listen(self):
-    #    pass
-    
-if __name__ == '__main__':
-    my_server = Server()
-    my_server.start() 
-    
-
-        
-
-    
+    def listen_gateway(self):
+        while True:
+            connection, (_,_) = self.gateway_socket.accept()
+            if connection is not None:
+                break
+        while True:
+            message = connection.recv(1024).decode('utf-8')
+            self.store_queue.put({"Stored message is": message})
