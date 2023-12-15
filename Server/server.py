@@ -33,17 +33,13 @@ class CustomRequestHandler(SimpleHTTPRequestHandler):
             # Fallback to default behavior for other routes
             super().do_GET()
         
-
-
-
 class Server:    
     def __init__(self, host='localhost', port=8080):
         self.store_queue = queue.Queue()
         
-        #self.create_gateway_socket()
+        self.create_gateway_socket()
         self.create_http_socket()
-        
-        #self.create_gateway_listener()
+        self.create_gateway_listener()
         
         self.server_address = (host, port)
         self.http_server = HTTPServer(self.server_address, CustomRequestHandler)
@@ -55,8 +51,10 @@ class Server:
         self.http_server.shutdown()
         self.http_server.server_close()
     
-    #def create_gateway_socket(self):
-    #   self.gateway_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    def create_gateway_socket(self):
+       self.gateway_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+       self.gateway_socket.bind()
+       self.gateway_socket.listen(1)
     
     def create_http_socket(self):
         self.http_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
