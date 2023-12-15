@@ -9,7 +9,7 @@ from utils import Data, HttpHandler, HTTPServer
 
 class Server:    
     def __init__(self, host='localhost', port=8080):
-        load_dotenv()
+        load_dotenv(dotenv_path="api_key.env")
         self.create_gateway_socket()
         self.create_http_socket()
         self.create_gateway_listener()
@@ -46,14 +46,15 @@ class Server:
             if connection is not None:
                 break
         while True:
-            message = connection.recv(1024).decode('utf-8')
-            self.store_queue.put({"Stored message is": message})
+            message = connection.recv(1024)
+            self.store_queue.put({"message": message})
     
     def store(self):
-        #connect to database
-        database_url = os.getenv("DATABASE_URL")
+        database_url = os.getenv("DATABASE_URI")
         connect(database_url)
+        
         while True:
-            #popping from queue
-            sensor_data = Data(field="", value=3 , timestamp="")
-            sensor_data.save()
+            data = self.store_queue.get()
+            message = data.get("message", None)
+            # sensor_data = Data(field="", value=3 , timestamp="")
+            # sensor_data.save()
