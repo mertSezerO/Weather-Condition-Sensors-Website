@@ -32,14 +32,20 @@ class CustomRequestHandler(SimpleHTTPRequestHandler):
         else:
             # Fallback to default behavior for other routes
             super().do_GET()
-        
+
+import os
+from dotenv import load_dotenv
+from mongoengine import connect
+
+from utils import Data
+
 class Server:    
     def __init__(self, host='localhost', port=8080):
-        self.store_queue = queue.Queue()
-        
+        load_dotenv()
         self.create_gateway_socket()
         self.create_http_socket()
         self.create_gateway_listener()
+        self.create_store_thread()
         
         self.server_address = (host, port)
         self.http_server = HTTPServer(self.server_address, CustomRequestHandler)
@@ -62,6 +68,10 @@ class Server:
     def create_gateway_listener(self):
         self.gateway_listener = threading.Thread(target=self.listen_gateway)
     
+    def create_store_thread(self):
+        self.store_queue = queue.Queue()
+        self.storer = threading.Thread(target=self.store)
+    
     def listen_gateway(self):
         while True:
             connection, (_,_) = self.gateway_socket.accept()
@@ -70,3 +80,12 @@ class Server:
         while True:
             message = connection.recv(1024).decode('utf-8')
             self.store_queue.put({"Stored message is": message})
+    
+    def store(self):
+        #connect to database
+        database_url = os.getenv("DATABASE_URL")
+        connect(database_url)
+        while True:
+            #popping from queue
+            sensor_data = Data(field="", value=3 , timestamp="")
+            sensor_data.save()
