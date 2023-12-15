@@ -3,11 +3,11 @@ class Datum():
         self.header = Header()
         self.body = Body()
     
-    def set_header_type(self, datum_type: str):
-        self.header.type = datum_type
+    def set_header_type(self, data_type: str):
+        self.header.data_type = data_type
     
-    def set_data_type(self, data_type: str):
-        self.body.type = data_type
+    def set_body_type(self, data_type: str):
+        self.body.data_type = data_type
         
     def set_value(self, value: int):
         self.body.value = value
@@ -17,29 +17,29 @@ class Datum():
 
 class Header():
     def __init__(self):
-        self._type = None
+        self._data_type = None
     
     @property
-    def type(self):
-        return self._type
+    def data_type(self):
+        return self._data_type
     
-    @type.setter
-    def type(self, type: str):
-        self._type = type
+    @data_type.setter
+    def data_type(self, type: str):
+        self._data_type = type
     
 class Body():
     def __init__(self):
-        self._type = None
+        self._data_type = None
         self._value = None
         self._message = None
         
     @property
-    def type(self):
-        return self._type
+    def data_type(self):
+        return self._data_type
     
-    @type.setter
-    def type(self, type: str):
-        self._type = type
+    @data_type.setter
+    def data_type(self, type: str):
+        self._data_type = type
     
     @property
     def value(self):

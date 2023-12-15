@@ -23,3 +23,9 @@ def temperature_off_log():
     
 def humidity_off_log():
     logging.info("HUMIDITY SENSOR OFF")
+    
+def send_weather_info_log():
+    logging.info("Weather info sent to Server")
+
+def send_sensor_info_log():
+    logging.info("Sensor info sent to Server")

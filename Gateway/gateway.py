@@ -2,7 +2,7 @@ import threading
 import queue
 import socket
 
-from util import logging
+from util import logging, Datum
 import time as time_module
 
 class Gateway:
@@ -78,6 +78,7 @@ class Gateway:
                     self.log_queue.put((logging.receive_alive_log, {}))
                 else:
                     self.log_queue.put((logging.receive_humidity_log, {"humidity": message}))
+                    self.send_queue.put({"field":"humidity","value": message})
         
     def listen_temperature(self):
         while True:
@@ -93,6 +94,8 @@ class Gateway:
             if message is not None:
                 self.temperature_alive = True
                 self.log_queue.put((logging.receive_temperature_log, {"temperature": message}))
+                self.send_queue.put({"field":"temperature","value": message})
+
     
     def log(self):
         while True:
@@ -112,6 +115,7 @@ class Gateway:
                 self.humidity_alive = False
                 start_time = time_module.time()
         self.log_queue.put((logging.humidity_off_log, {}))
+        self.send_queue.put({"field":"humidity-off"})
         
     def start_temperature_clock(self):
         start_time = time_module.time()
@@ -126,6 +130,37 @@ class Gateway:
                 self.temperature_alive = False
                 start_time = time_module.time()
         self.log_queue.put((logging.temperature_off_log, {}))
+        self.send_queue.put({"field":"temperature-off"})
         
     def send(self):
-        pass     
+        while True:
+            data = self.send_queue.get()
+            data_type = data.get("field", None)
+            data_value = data.get("value", None)
+            if data_type == "temperature":
+                self._send_weather_info("temperature", data_value)
+            elif data_type == "humidity":
+                self._send_weather_info("humidity", data_value)
+            elif data_type == "temperature-off":
+                self._send_sensor_info("temperature")
+            else:
+                self._send_sensor_info("humidity")
+        
+    def _send_weather_info(self, body_type, value):
+        datum = Datum()
+        datum.set_header_type("weather info")
+        datum.set_body_type(body_type)
+        datum.set_value(value)
+        datum.set_message(f"{body_type} is now {value}")
+        self.server_socket.send(datum)
+        self.log_queue.put((logging.send_weather_info_log, {}))
+    
+    def _send_sensor_info(self, body_type):
+        datum = Datum()
+        datum.set_header_type("sensor info")
+        datum.set_body_type(body_type)
+        datum.set_message(f"{body_type} Sensor OFF")
+        self.server_socket.send(datum)
+        self.log_queue.put((logging.send_sensor_info_log, {}))
+
+            
