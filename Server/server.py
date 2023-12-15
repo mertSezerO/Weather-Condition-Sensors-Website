@@ -5,13 +5,14 @@ import os
 from dotenv import load_dotenv
 from mongoengine import connect
 
-from util import Data, Info, HttpHandler, HTTPServer
+from util import Data, Info, HttpHandler, HTTPServer, logging
 
 class Server:    
     def __init__(self, host='localhost', port=8080):
         load_dotenv(dotenv_path="api_key.env")
         self.create_gateway_socket()
         self.create_http_socket()
+        
         self.create_gateway_listener()
         self.create_store_thread()
         
@@ -40,6 +41,10 @@ class Server:
         self.store_queue = queue.Queue()
         self.storer = threading.Thread(target=self.store)
     
+    def create_logger(self):
+        self.log_queue = queue.Queue()
+        self.logger_thread = threading.Thread(target=self.log)
+    
     def listen_gateway(self):
         while True:
             connection, (_,_) = self.gateway_socket.accept()
@@ -48,6 +53,7 @@ class Server:
         while True:
             message = connection.recv(1024)
             self.store_queue.put({"message": message})
+            self.log_queue.put((logging.gateway_log, message.body.message))
             
     
     def store(self):
@@ -63,3 +69,8 @@ class Server:
             else:
                 sensor_info = Info(type=report.body.data_type, message= report.body.message)
                 sensor_info.save()
+                
+    def log(self):
+        while True:
+            log_task, args = self.log_queue.get()
+            log_task(**args)   
