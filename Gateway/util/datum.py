@@ -19,6 +19,7 @@ from datetime import datetime
 class Header():
     def __init__(self):
         self._data_type = None
+        self.timestamp = datetime.now().strftime("%H:%M:%S")
     
     @property
     def data_type(self):
@@ -27,7 +28,6 @@ class Header():
     @data_type.setter
     def data_type(self, type: str):
         self._data_type = type
-        self.timestamp = datetime.now().strftime("%H:%M:%S")
     
 class Body():
     def __init__(self):

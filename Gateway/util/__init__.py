@@ -1,2 +1,2 @@
-from . import utils as logging
+from . import log as logging
 from .datum import Datum

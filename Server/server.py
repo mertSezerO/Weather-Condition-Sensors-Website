@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 from mongoengine import connect
 
-from utils import Data, HttpHandler, HTTPServer
+from util import Data, Info, HttpHandler, HTTPServer
 
 class Server:    
     def __init__(self, host='localhost', port=8080):
@@ -48,6 +48,7 @@ class Server:
         while True:
             message = connection.recv(1024)
             self.store_queue.put({"message": message})
+            
     
     def store(self):
         database_url = os.getenv("DATABASE_URI")
@@ -55,6 +56,10 @@ class Server:
         
         while True:
             data = self.store_queue.get()
-            message = data.get("message", None)
-            # sensor_data = Data(field="", value=3 , timestamp="")
-            # sensor_data.save()
+            report = data.get("message", None)
+            if report.header.data_type == "weather info":
+                sensor_data = Data(type=report.body.data_type, value=report.body.value , timestamp=report.header.timestamp)
+                sensor_data.save()
+            else:
+                sensor_info = Info(type=report.body.data_type, message= report.body.message)
+                sensor_info.save()
