@@ -2,15 +2,12 @@ import threading
 import queue
 import socket
 import json
-import os
-from dotenv import load_dotenv
-from mongoengine import connect
 
-from util import Data, Info, HttpHandler, HTTPServer, logging, Datum
+from util import insert_info, insert_data
+from util import HttpHandler, HTTPServer, logging, Datum
 
 class Server:    
     def __init__(self, host='localhost', port=8080, port_gateway= 5000):
-        load_dotenv(dotenv_path="api_key.env")
         self.create_gateway_socket(host, port_gateway)
         # self.create_http_socket()
         
@@ -24,10 +21,10 @@ class Server:
         self.start()
         
     def start(self):
-        # self.http_server.serve_forever()
         self.gateway_listener.start()
         self.storer.start()
         self.logger_thread.start()
+        self.http_server.serve_forever()
 
     def stop(self):
         self.http_server.shutdown()
@@ -71,20 +68,14 @@ class Server:
                 self.log_queue.put((logging.gateway_log, {"message": message.body.message}))
             
     
-    def store(self):
-        # database_uri = os.getenv("DATABASE_URI")
-        # connect(database_uri)
-        connect('Sensor', host='localhost', port=27017)
-        
+    def store(self):   
         while True:
             data = self.store_queue.get()
             report = data.get("message", None)
             if report.header.data_type == "weather info":
-                sensor_data = Data(type=report.body.data_type, value=report.body.value , timestamp=report.header.timestamp)
-                sensor_data.save()
+                insert_data(data_type=report.body.data_type, data_value=report.body.value , timestamp=report.header.timestamp)
             else:
-                sensor_info = Info(type=report.body.data_type, message= report.body.message)
-                sensor_info.save()
+                insert_info(info_type=report.body.data_type, info_message=report.body.message)
                 
     def log(self):
         while True:

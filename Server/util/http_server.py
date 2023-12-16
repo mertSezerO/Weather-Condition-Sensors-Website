@@ -1,7 +1,7 @@
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 from mongoengine import connect
 
-from .model import Data
+from .model import get_humidity_data, get_temperature_data
 
 class HttpHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
@@ -11,8 +11,7 @@ class HttpHandler(SimpleHTTPRequestHandler):
             self.send_header('Content-type', 'text/html')
             self.end_headers()
         
-            documents = Data.objects(type="temperature")
-            temperature_data = [document.value for document in documents]
+            temperature_data = get_temperature_data()
             html_content = "<h1>Temperature Data</h1>"
             for temp in temperature_data:
                 html_content += f"<p>{temp}</p>"
@@ -24,8 +23,7 @@ class HttpHandler(SimpleHTTPRequestHandler):
             self.send_header('Content-type', 'text/html')
             self.end_headers()
             
-            documents = Data.objects(type="humidity")
-            humidity_data = [document.value for document in documents]
+            humidity_data = get_humidity_data()
             html_content = "<h1>Humidity Data</h1>"
             for temp in humidity_data:
                 html_content += f"<p>{temp}</p>"

@@ -51,3 +51,366 @@
 15:19:26, INFO ALIVE message sent to Gateway
 15:19:26, INFO Temperature value sent to Gateway: 22
 15:19:26, INFO Humidity value sent to Gateway: 84
+15:22:32, INFO Temperature value sent to Gateway: 23
+15:22:32, INFO Humidity value sent to Gateway: 83
+15:22:32, INFO ALIVE message sent to Gateway
+15:22:33, INFO Temperature value sent to Gateway: 30
+15:22:34, INFO Temperature value sent to Gateway: 24
+15:22:35, INFO ALIVE message sent to Gateway
+15:22:35, INFO Temperature value sent to Gateway: 26
+15:22:36, INFO Temperature value sent to Gateway: 20
+15:22:37, INFO Temperature value sent to Gateway: 26
+15:22:38, INFO ALIVE message sent to Gateway
+15:22:38, INFO Humidity value sent to Gateway: 82
+15:22:38, INFO Temperature value sent to Gateway: 28
+15:22:39, INFO Temperature value sent to Gateway: 26
+15:22:40, INFO Temperature value sent to Gateway: 20
+15:22:40, INFO Humidity value sent to Gateway: 83
+15:22:41, INFO ALIVE message sent to Gateway
+15:22:41, INFO Temperature value sent to Gateway: 25
+15:22:42, INFO Temperature value sent to Gateway: 20
+15:22:43, INFO Temperature value sent to Gateway: 30
+15:22:44, INFO ALIVE message sent to Gateway
+15:22:45, INFO Temperature value sent to Gateway: 20
+15:22:45, INFO Humidity value sent to Gateway: 83
+15:22:46, INFO Temperature value sent to Gateway: 26
+15:22:47, INFO Temperature value sent to Gateway: 26
+15:22:47, INFO Humidity value sent to Gateway: 90
+15:22:47, INFO ALIVE message sent to Gateway
+15:22:48, INFO Temperature value sent to Gateway: 26
+15:22:49, INFO Temperature value sent to Gateway: 22
+15:22:50, INFO Humidity value sent to Gateway: 81
+15:22:50, INFO Temperature value sent to Gateway: 23
+15:22:50, INFO ALIVE message sent to Gateway
+15:22:51, INFO Temperature value sent to Gateway: 21
+15:22:52, INFO Temperature value sent to Gateway: 21
+15:22:53, INFO Humidity value sent to Gateway: 85
+15:22:53, INFO Temperature value sent to Gateway: 22
+15:22:53, INFO ALIVE message sent to Gateway
+15:22:54, INFO Humidity value sent to Gateway: 82
+15:22:54, INFO Temperature value sent to Gateway: 21
+15:22:55, INFO Temperature value sent to Gateway: 27
+15:22:56, INFO Humidity value sent to Gateway: 85
+15:22:56, INFO Temperature value sent to Gateway: 25
+15:22:56, INFO ALIVE message sent to Gateway
+15:22:57, INFO Temperature value sent to Gateway: 23
+15:22:58, INFO Temperature value sent to Gateway: 29
+15:22:59, INFO Temperature value sent to Gateway: 20
+15:22:59, INFO ALIVE message sent to Gateway
+15:23:00, INFO Temperature value sent to Gateway: 22
+15:23:01, INFO Humidity value sent to Gateway: 82
+15:23:01, INFO Temperature value sent to Gateway: 23
+15:23:02, INFO Temperature value sent to Gateway: 24
+15:23:03, INFO ALIVE message sent to Gateway
+15:23:03, INFO Temperature value sent to Gateway: 30
+15:23:04, INFO Temperature value sent to Gateway: 25
+15:23:05, INFO Temperature value sent to Gateway: 21
+15:23:06, INFO ALIVE message sent to Gateway
+15:23:06, INFO Temperature value sent to Gateway: 30
+15:23:07, INFO Temperature value sent to Gateway: 21
+15:23:08, INFO Humidity value sent to Gateway: 89
+15:23:08, INFO Temperature value sent to Gateway: 24
+15:23:09, INFO ALIVE message sent to Gateway
+15:23:09, INFO Temperature value sent to Gateway: 26
+15:23:10, INFO Humidity value sent to Gateway: 88
+15:23:10, INFO Temperature value sent to Gateway: 29
+15:23:11, INFO Temperature value sent to Gateway: 24
+15:23:12, INFO ALIVE message sent to Gateway
+15:23:12, INFO Humidity value sent to Gateway: 81
+15:23:12, INFO Temperature value sent to Gateway: 30
+15:23:13, INFO Temperature value sent to Gateway: 21
+15:23:14, INFO Temperature value sent to Gateway: 21
+15:23:15, INFO ALIVE message sent to Gateway
+15:23:15, INFO Humidity value sent to Gateway: 83
+15:23:15, INFO Temperature value sent to Gateway: 30
+15:23:16, INFO Temperature value sent to Gateway: 26
+15:23:17, INFO Temperature value sent to Gateway: 26
+15:23:18, INFO ALIVE message sent to Gateway
+15:23:18, INFO Temperature value sent to Gateway: 28
+15:23:19, INFO Temperature value sent to Gateway: 22
+15:23:20, INFO Temperature value sent to Gateway: 22
+15:23:21, INFO ALIVE message sent to Gateway
+15:23:21, INFO Temperature value sent to Gateway: 28
+15:23:22, INFO Temperature value sent to Gateway: 21
+15:23:23, INFO Humidity value sent to Gateway: 86
+15:23:23, INFO Temperature value sent to Gateway: 25
+15:23:24, INFO ALIVE message sent to Gateway
+15:23:24, INFO Temperature value sent to Gateway: 25
+15:23:25, INFO Humidity value sent to Gateway: 84
+15:23:25, INFO Temperature value sent to Gateway: 24
+15:23:26, INFO Temperature value sent to Gateway: 21
+15:23:27, INFO ALIVE message sent to Gateway
+15:23:27, INFO Temperature value sent to Gateway: 27
+15:23:28, INFO Humidity value sent to Gateway: 87
+15:23:28, INFO Temperature value sent to Gateway: 23
+15:23:29, INFO Temperature value sent to Gateway: 22
+15:23:30, INFO ALIVE message sent to Gateway
+15:23:30, INFO Temperature value sent to Gateway: 22
+15:23:31, INFO Temperature value sent to Gateway: 22
+15:23:32, INFO Temperature value sent to Gateway: 21
+15:23:33, INFO ALIVE message sent to Gateway
+15:23:33, INFO Temperature value sent to Gateway: 21
+15:23:34, INFO Temperature value sent to Gateway: 20
+15:23:35, INFO Temperature value sent to Gateway: 27
+15:23:36, INFO ALIVE message sent to Gateway
+15:23:36, INFO Humidity value sent to Gateway: 83
+15:23:36, INFO Temperature value sent to Gateway: 24
+15:23:37, INFO Temperature value sent to Gateway: 27
+15:23:38, INFO Temperature value sent to Gateway: 25
+15:23:39, INFO ALIVE message sent to Gateway
+15:23:39, INFO Humidity value sent to Gateway: 84
+15:23:39, INFO Temperature value sent to Gateway: 30
+15:23:40, INFO Humidity value sent to Gateway: 90
+15:23:40, INFO Temperature value sent to Gateway: 28
+15:23:41, INFO Temperature value sent to Gateway: 26
+15:23:42, INFO ALIVE message sent to Gateway
+15:23:42, INFO Temperature value sent to Gateway: 23
+15:23:43, INFO Temperature value sent to Gateway: 28
+15:23:44, INFO Temperature value sent to Gateway: 21
+15:23:45, INFO ALIVE message sent to Gateway
+15:23:45, INFO Temperature value sent to Gateway: 22
+15:23:46, INFO Temperature value sent to Gateway: 26
+15:25:09, INFO Temperature value sent to Gateway: 30
+15:25:09, INFO ALIVE message sent to Gateway
+15:25:10, INFO Temperature value sent to Gateway: 24
+15:25:11, INFO Temperature value sent to Gateway: 25
+15:25:12, INFO ALIVE message sent to Gateway
+15:25:12, INFO Temperature value sent to Gateway: 29
+15:25:12, INFO Humidity value sent to Gateway: 86
+15:25:13, INFO Temperature value sent to Gateway: 25
+15:25:14, INFO Temperature value sent to Gateway: 30
+15:25:14, INFO Humidity value sent to Gateway: 85
+15:25:15, INFO ALIVE message sent to Gateway
+15:25:15, INFO Temperature value sent to Gateway: 25
+15:25:16, INFO Temperature value sent to Gateway: 27
+15:25:17, INFO Temperature value sent to Gateway: 25
+15:25:18, INFO ALIVE message sent to Gateway
+15:25:18, INFO Temperature value sent to Gateway: 21
+15:25:18, INFO Humidity value sent to Gateway: 83
+15:25:19, INFO Temperature value sent to Gateway: 20
+15:25:20, INFO Temperature value sent to Gateway: 21
+15:25:20, INFO Humidity value sent to Gateway: 86
+15:25:21, INFO ALIVE message sent to Gateway
+15:25:21, INFO Temperature value sent to Gateway: 24
+15:25:22, INFO Temperature value sent to Gateway: 28
+15:25:23, INFO Temperature value sent to Gateway: 25
+15:25:24, INFO ALIVE message sent to Gateway
+15:25:24, INFO Temperature value sent to Gateway: 25
+15:25:25, INFO Temperature value sent to Gateway: 22
+15:25:26, INFO Temperature value sent to Gateway: 21
+15:25:27, INFO ALIVE message sent to Gateway
+15:25:27, INFO Temperature value sent to Gateway: 28
+15:25:28, INFO Temperature value sent to Gateway: 20
+15:25:29, INFO Temperature value sent to Gateway: 23
+15:25:30, INFO ALIVE message sent to Gateway
+15:25:30, INFO Temperature value sent to Gateway: 27
+15:25:31, INFO Temperature value sent to Gateway: 30
+15:25:32, INFO Temperature value sent to Gateway: 28
+15:25:33, INFO ALIVE message sent to Gateway
+15:25:33, INFO Temperature value sent to Gateway: 26
+15:25:34, INFO Temperature value sent to Gateway: 25
+15:25:34, INFO Humidity value sent to Gateway: 85
+15:25:35, INFO Temperature value sent to Gateway: 27
+15:25:36, INFO ALIVE message sent to Gateway
+15:25:36, INFO Temperature value sent to Gateway: 24
+15:26:39, INFO Temperature value sent to Gateway: 25
+15:26:39, INFO ALIVE message sent to Gateway
+15:26:40, INFO Temperature value sent to Gateway: 23
+15:26:40, INFO Humidity value sent to Gateway: 83
+15:26:41, INFO Temperature value sent to Gateway: 25
+15:26:42, INFO ALIVE message sent to Gateway
+15:26:42, INFO Temperature value sent to Gateway: 27
+15:26:43, INFO Temperature value sent to Gateway: 21
+15:26:44, INFO Temperature value sent to Gateway: 25
+15:26:45, INFO ALIVE message sent to Gateway
+15:26:45, INFO Temperature value sent to Gateway: 23
+15:26:45, INFO Humidity value sent to Gateway: 86
+15:26:46, INFO Temperature value sent to Gateway: 24
+15:26:47, INFO Temperature value sent to Gateway: 24
+15:26:47, INFO Humidity value sent to Gateway: 83
+15:26:48, INFO ALIVE message sent to Gateway
+15:26:48, INFO Temperature value sent to Gateway: 22
+15:26:49, INFO Temperature value sent to Gateway: 22
+15:26:50, INFO Temperature value sent to Gateway: 29
+15:26:51, INFO ALIVE message sent to Gateway
+15:26:51, INFO Temperature value sent to Gateway: 26
+15:26:52, INFO Temperature value sent to Gateway: 27
+15:26:53, INFO Temperature value sent to Gateway: 27
+15:26:54, INFO ALIVE message sent to Gateway
+15:26:54, INFO Temperature value sent to Gateway: 27
+15:39:45, INFO Temperature value sent to Gateway: 23
+15:39:45, INFO Humidity value sent to Gateway: 87
+15:39:45, INFO ALIVE message sent to Gateway
+15:39:46, INFO Temperature value sent to Gateway: 21
+15:39:47, INFO Temperature value sent to Gateway: 22
+15:39:48, INFO ALIVE message sent to Gateway
+15:39:48, INFO Temperature value sent to Gateway: 29
+15:39:49, INFO Temperature value sent to Gateway: 24
+15:39:50, INFO Temperature value sent to Gateway: 27
+15:39:51, INFO ALIVE message sent to Gateway
+15:39:51, INFO Temperature value sent to Gateway: 30
+15:39:51, INFO Humidity value sent to Gateway: 90
+15:39:52, INFO Temperature value sent to Gateway: 21
+15:39:53, INFO Temperature value sent to Gateway: 30
+15:39:53, INFO Humidity value sent to Gateway: 84
+15:39:54, INFO ALIVE message sent to Gateway
+15:39:54, INFO Temperature value sent to Gateway: 24
+15:39:55, INFO Temperature value sent to Gateway: 24
+15:39:56, INFO Temperature value sent to Gateway: 22
+15:39:56, INFO Humidity value sent to Gateway: 87
+15:39:57, INFO ALIVE message sent to Gateway
+15:39:57, INFO Temperature value sent to Gateway: 24
+15:39:58, INFO Temperature value sent to Gateway: 26
+15:39:59, INFO Temperature value sent to Gateway: 29
+15:40:00, INFO ALIVE message sent to Gateway
+15:40:00, INFO Temperature value sent to Gateway: 26
+15:40:01, INFO Temperature value sent to Gateway: 30
+15:40:02, INFO Temperature value sent to Gateway: 23
+15:40:03, INFO ALIVE message sent to Gateway
+15:40:03, INFO Temperature value sent to Gateway: 29
+15:40:03, INFO Humidity value sent to Gateway: 88
+15:40:04, INFO Temperature value sent to Gateway: 26
+15:40:04, INFO Humidity value sent to Gateway: 84
+15:40:05, INFO Temperature value sent to Gateway: 29
+15:40:06, INFO ALIVE message sent to Gateway
+15:40:06, INFO Temperature value sent to Gateway: 30
+15:40:08, INFO Temperature value sent to Gateway: 24
+15:40:08, INFO Humidity value sent to Gateway: 81
+15:40:09, INFO Temperature value sent to Gateway: 21
+15:40:09, INFO Humidity value sent to Gateway: 87
+15:40:09, INFO ALIVE message sent to Gateway
+15:40:10, INFO Temperature value sent to Gateway: 25
+15:40:11, INFO Temperature value sent to Gateway: 25
+15:40:12, INFO Temperature value sent to Gateway: 27
+15:40:12, INFO ALIVE message sent to Gateway
+15:41:51, INFO Temperature value sent to Gateway: 25
+15:41:51, INFO Humidity value sent to Gateway: 82
+15:41:51, INFO ALIVE message sent to Gateway
+15:41:52, INFO Temperature value sent to Gateway: 23
+15:41:53, INFO Temperature value sent to Gateway: 26
+15:41:54, INFO ALIVE message sent to Gateway
+15:41:54, INFO Temperature value sent to Gateway: 25
+15:41:55, INFO Temperature value sent to Gateway: 26
+15:41:56, INFO Temperature value sent to Gateway: 30
+15:41:57, INFO ALIVE message sent to Gateway
+15:41:57, INFO Temperature value sent to Gateway: 27
+15:41:58, INFO Temperature value sent to Gateway: 23
+15:41:59, INFO Temperature value sent to Gateway: 27
+15:42:00, INFO ALIVE message sent to Gateway
+15:42:00, INFO Temperature value sent to Gateway: 26
+15:42:01, INFO Temperature value sent to Gateway: 24
+15:42:02, INFO Temperature value sent to Gateway: 28
+15:42:03, INFO ALIVE message sent to Gateway
+15:42:03, INFO Temperature value sent to Gateway: 24
+15:42:04, INFO Temperature value sent to Gateway: 27
+15:42:05, INFO Temperature value sent to Gateway: 25
+15:42:05, INFO Humidity value sent to Gateway: 81
+15:42:06, INFO ALIVE message sent to Gateway
+15:42:06, INFO Temperature value sent to Gateway: 29
+15:42:07, INFO Temperature value sent to Gateway: 29
+15:42:08, INFO Temperature value sent to Gateway: 24
+15:42:09, INFO ALIVE message sent to Gateway
+15:42:09, INFO Temperature value sent to Gateway: 29
+15:42:10, INFO Temperature value sent to Gateway: 21
+15:42:10, INFO Humidity value sent to Gateway: 82
+15:42:11, INFO Temperature value sent to Gateway: 28
+15:42:12, INFO ALIVE message sent to Gateway
+15:42:12, INFO Temperature value sent to Gateway: 26
+15:42:13, INFO Temperature value sent to Gateway: 26
+15:42:14, INFO Temperature value sent to Gateway: 21
+15:42:14, INFO Humidity value sent to Gateway: 84
+15:42:15, INFO ALIVE message sent to Gateway
+15:42:15, INFO Temperature value sent to Gateway: 28
+15:42:15, INFO Humidity value sent to Gateway: 84
+15:42:16, INFO Temperature value sent to Gateway: 22
+15:42:16, INFO Humidity value sent to Gateway: 89
+15:42:17, INFO Temperature value sent to Gateway: 20
+15:42:18, INFO ALIVE message sent to Gateway
+15:42:18, INFO Temperature value sent to Gateway: 28
+15:42:19, INFO Temperature value sent to Gateway: 20
+15:42:20, INFO Temperature value sent to Gateway: 21
+15:42:20, INFO Humidity value sent to Gateway: 87
+15:42:21, INFO ALIVE message sent to Gateway
+15:42:21, INFO Temperature value sent to Gateway: 22
+15:42:21, INFO Humidity value sent to Gateway: 89
+15:42:22, INFO Temperature value sent to Gateway: 23
+15:42:23, INFO Temperature value sent to Gateway: 25
+15:42:24, INFO ALIVE message sent to Gateway
+15:42:24, INFO Temperature value sent to Gateway: 30
+15:42:25, INFO Temperature value sent to Gateway: 20
+15:42:26, INFO Temperature value sent to Gateway: 29
+15:42:27, INFO ALIVE message sent to Gateway
+15:42:27, INFO Temperature value sent to Gateway: 23
+15:42:28, INFO Temperature value sent to Gateway: 30
+15:56:55, INFO Temperature value sent to Gateway: 23
+15:56:55, INFO ALIVE message sent to Gateway
+15:56:56, INFO Temperature value sent to Gateway: 28
+15:56:57, INFO Temperature value sent to Gateway: 25
+15:56:58, INFO ALIVE message sent to Gateway
+15:56:58, INFO Temperature value sent to Gateway: 22
+15:56:59, INFO Temperature value sent to Gateway: 25
+15:57:00, INFO Temperature value sent to Gateway: 23
+15:57:01, INFO ALIVE message sent to Gateway
+15:57:01, INFO Temperature value sent to Gateway: 24
+15:57:02, INFO Temperature value sent to Gateway: 21
+15:57:03, INFO Temperature value sent to Gateway: 21
+15:57:04, INFO ALIVE message sent to Gateway
+15:57:04, INFO Temperature value sent to Gateway: 20
+15:57:05, INFO Temperature value sent to Gateway: 26
+15:57:06, INFO Temperature value sent to Gateway: 28
+15:57:07, INFO ALIVE message sent to Gateway
+15:57:07, INFO Temperature value sent to Gateway: 23
+15:57:08, INFO Temperature value sent to Gateway: 26
+15:57:09, INFO Temperature value sent to Gateway: 22
+15:57:10, INFO ALIVE message sent to Gateway
+15:57:10, INFO Temperature value sent to Gateway: 24
+15:57:11, INFO Temperature value sent to Gateway: 21
+15:57:12, INFO Temperature value sent to Gateway: 27
+15:57:13, INFO ALIVE message sent to Gateway
+15:57:13, INFO Temperature value sent to Gateway: 22
+15:57:14, INFO Temperature value sent to Gateway: 21
+15:57:15, INFO Temperature value sent to Gateway: 26
+15:57:16, INFO ALIVE message sent to Gateway
+15:57:16, INFO Temperature value sent to Gateway: 29
+15:57:17, INFO Temperature value sent to Gateway: 21
+15:57:18, INFO Temperature value sent to Gateway: 28
+15:57:19, INFO ALIVE message sent to Gateway
+15:57:19, INFO Temperature value sent to Gateway: 29
+15:57:20, INFO Temperature value sent to Gateway: 21
+15:57:21, INFO Temperature value sent to Gateway: 26
+15:57:22, INFO ALIVE message sent to Gateway
+15:57:22, INFO Temperature value sent to Gateway: 21
+15:57:22, INFO Humidity value sent to Gateway: 86
+15:57:23, INFO Temperature value sent to Gateway: 23
+15:57:24, INFO Temperature value sent to Gateway: 27
+15:57:25, INFO ALIVE message sent to Gateway
+15:57:25, INFO Temperature value sent to Gateway: 20
+15:57:26, INFO Temperature value sent to Gateway: 27
+15:57:27, INFO Temperature value sent to Gateway: 20
+15:57:27, INFO Humidity value sent to Gateway: 90
+15:57:28, INFO ALIVE message sent to Gateway
+15:57:28, INFO Temperature value sent to Gateway: 23
+15:57:29, INFO Temperature value sent to Gateway: 27
+15:57:30, INFO Temperature value sent to Gateway: 20
+15:57:31, INFO ALIVE message sent to Gateway
+15:57:31, INFO Temperature value sent to Gateway: 23
+15:57:32, INFO Temperature value sent to Gateway: 20
+15:57:32, INFO Humidity value sent to Gateway: 88
+15:57:33, INFO Temperature value sent to Gateway: 20
+15:57:34, INFO ALIVE message sent to Gateway
+15:57:34, INFO Temperature value sent to Gateway: 30
+15:57:34, INFO Humidity value sent to Gateway: 88
+15:57:35, INFO Temperature value sent to Gateway: 20
+15:57:36, INFO Temperature value sent to Gateway: 28
+15:57:37, INFO ALIVE message sent to Gateway
+15:57:37, INFO Temperature value sent to Gateway: 20
+15:57:38, INFO Temperature value sent to Gateway: 27
+15:57:38, INFO Humidity value sent to Gateway: 82
+15:57:39, INFO Temperature value sent to Gateway: 21
+15:57:40, INFO ALIVE message sent to Gateway
+15:57:40, INFO Temperature value sent to Gateway: 22
+15:57:41, INFO Temperature value sent to Gateway: 26
+15:57:42, INFO Temperature value sent to Gateway: 24
+15:57:43, INFO ALIVE message sent to Gateway
+15:57:43, INFO Temperature value sent to Gateway: 27
+15:57:44, INFO Temperature value sent to Gateway: 22
