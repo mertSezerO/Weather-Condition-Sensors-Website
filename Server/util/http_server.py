@@ -1,11 +1,9 @@
 from http.server import SimpleHTTPRequestHandler, HTTPServer
-from mongoengine import connect
 
 from .model import get_humidity_data, get_temperature_data
 
 class HttpHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
-        connect(db="Sensor", host="localhost", port=27017)
         if self.path == '/temperature':
             self.send_response(200)
             self.send_header('Content-type', 'text/html')
