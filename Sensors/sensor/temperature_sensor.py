@@ -6,7 +6,7 @@ from util import logging
 from .sensor import Sensor
 
 class TemperatureSensor(Sensor):
-    def __init__(self, host="localhost", port=3001):
+    def __init__(self, host="localhost", port=3000):
         Sensor.__init__(self=self)
         self.host = host
         self.port = port

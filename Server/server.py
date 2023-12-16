@@ -24,7 +24,7 @@ class Server:
         self.start()
         
     def start(self):
-        self.http_server.serve_forever()
+        # self.http_server.serve_forever()
         self.gateway_listener.start()
         self.storer.start()
         self.logger_thread.start()
