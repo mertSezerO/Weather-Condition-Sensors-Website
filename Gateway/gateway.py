@@ -7,7 +7,7 @@ from util import logging, Datum
 import time as time_module
 
 class Gateway:
-    def __init__(self, host, port_temp, port_hum, port_server):    
+    def __init__(self, host="localhost", port_temp=3000, port_hum=3001, port_server=5000):    
         self.create_temperature_socket(host,port_temp)
         self.create_humidity_socket(host,port_hum)
         self.create_server_socket(host,port_server)
@@ -23,6 +23,7 @@ class Gateway:
         self.humidity_alive = False
         self.temperature_terminated = False
         self.humidity_terminated = False
+        
         self.start()
                      
     def start(self):

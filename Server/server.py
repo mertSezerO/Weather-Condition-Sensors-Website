@@ -24,9 +24,9 @@ class Server:
         self.start()
         
     def start(self):
-        # self.http_server.serve_forever()
+        self.http_server.serve_forever()
         self.gateway_listener.start()
-        # self.storer.start()
+        self.storer.start()
         self.logger_thread.start()
 
     def stop(self):
@@ -72,8 +72,9 @@ class Server:
             
     
     def store(self):
-        database_url = os.getenv("DATABASE_URI")
-        connect(database_url)
+        # database_uri = os.getenv("DATABASE_URI")
+        # connect(database_uri)
+        connect('Sensor', host='localhost', port=27017)
         
         while True:
             data = self.store_queue.get()

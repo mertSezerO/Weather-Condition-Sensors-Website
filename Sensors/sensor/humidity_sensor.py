@@ -7,7 +7,7 @@ from util import logging
 from .sensor import Sensor
 
 class HumiditySensor(Sensor):
-    def __init__(self, host, port):
+    def __init__(self, host="localhost", port=3000):
         Sensor.__init__(self=self)
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.host = host
