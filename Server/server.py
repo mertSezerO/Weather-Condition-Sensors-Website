@@ -9,9 +9,11 @@ from util import logging, Datum
 
 class Server:
     def __init__(self, host="localhost", port=8080, port_gateway=5000):
+        # Creation of necessary sockets
         self.create_gateway_socket(host, port_gateway)
         self.create_http_socket(host, port)
 
+        # All threads created according to their tasks
         self.create_gateway_listener()
         self.create_http_listener()
         self.create_http_handler()
@@ -21,6 +23,7 @@ class Server:
 
         self.start()
 
+    # Start method to starting the work of server
     def start(self):
         self.gateway_listener.start()
         self.http_listener.start()
@@ -56,6 +59,8 @@ class Server:
         self.log_queue = queue.Queue()
         self.logger_thread = threading.Thread(target=self.log)
 
+    # Firstly waits for connection of gateway. After that, listens actions and message from gateway.
+    # If there is a message, puts data into correct queues.
     def listen_gateway(self):
         while True:
             connection, (_, _) = self.gateway_socket.accept()
@@ -76,12 +81,14 @@ class Server:
                     (logging.gateway_log, {"message": message.body.message})
                 )
 
+    # Listens http requests. Adds each client to queue to be served.
     def listen_http(self):
         while True:
             connection, address = self.http_socket.accept()
             if connection is not None:
                 self.client_queue.put({"client_socket": connection, "address": address})
 
+    # Handles one request from clients queue. Sends response back to the client.
     def handle_http(self):
         while True:
             data = self.client_queue.get()
@@ -109,10 +116,12 @@ class Server:
             response = status_line + headers + html
             client_socket.sendall(response.encode())
 
+    # Extracts path from incoming request
     def extract_path(self, request):
         request_lines = request.split(" ")
         return request_lines[1]
 
+    # Stores data received from gateway.
     def store(self):
         while True:
             data = self.store_queue.get()
@@ -128,6 +137,7 @@ class Server:
                     info_type=report.body.data_type, info_message=report.body.message
                 )
 
+    # Waits for data that will be logged. Unpacks the data and calls the method that will be used with necessary info.
     def log(self):
         while True:
             log_task, args = self.log_queue.get()
