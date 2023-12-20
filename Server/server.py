@@ -14,6 +14,8 @@ class Server:
 
         self.create_gateway_listener()
         self.create_http_listener()
+        self.create_http_handler()
+
         self.create_store_thread()
         self.create_logger()
 
@@ -22,6 +24,7 @@ class Server:
     def start(self):
         self.gateway_listener.start()
         self.http_listener.start()
+        self.http_handler.start()
         self.storer.start()
         self.logger_thread.start()
         self.http_server.serve_forever()
@@ -41,6 +44,10 @@ class Server:
 
     def create_http_listener(self):
         self.http_listener = threading.Thread(target=self.listen_http)
+        self.client_queue = queue.Queue()
+
+    def create_http_handler(self):
+        self.http_handler = threading.Thread(target=self.handle_http)
 
     def create_store_thread(self):
         self.store_queue = queue.Queue()
@@ -71,6 +78,12 @@ class Server:
                 )
 
     def listen_http(self):
+        while True:
+            connection, (_, _) = self.gateway_socket.accept()
+            if connection is not None:
+                self.client_queue.put({"client_socket": connection})
+
+    def handle_http(self):
         pass
 
     def store(self):
