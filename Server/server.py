@@ -22,12 +22,11 @@ class Server:
         self.start()
 
     def start(self):
-        self.gateway_listener.start()
+        # self.gateway_listener.start()
         self.http_listener.start()
         self.http_handler.start()
-        self.storer.start()
-        self.logger_thread.start()
-        self.http_server.serve_forever()
+        # self.storer.start()
+        # self.logger_thread.start()
 
     def create_gateway_socket(self, host, port):
         self.gateway_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -37,7 +36,7 @@ class Server:
     def create_http_socket(self, host, port):
         self.http_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.http_socket.bind((host, port))
-        self.gateway_socket.listen(0)
+        self.http_socket.listen(0)
 
     def create_gateway_listener(self):
         self.gateway_listener = threading.Thread(target=self.listen_gateway)
@@ -79,12 +78,21 @@ class Server:
 
     def listen_http(self):
         while True:
-            connection, (_, _) = self.gateway_socket.accept()
+            connection, (_, _) = self.http_socket.accept()
             if connection is not None:
                 self.client_queue.put({"client_socket": connection})
 
     def handle_http(self):
-        pass
+        while True:
+            data = self.client_queue.get()
+            client_socket = data.get("client_socket", None)
+            message = client_socket.recv(1024).decode("utf-8")
+            extracted = self.extract_path(message)
+            print(extracted)
+
+    def extract_path(self, request):
+        request_lines = request.split(" ")
+        return request_lines[1]
 
     def store(self):
         while True:
