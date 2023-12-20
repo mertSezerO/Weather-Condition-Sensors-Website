@@ -3,7 +3,7 @@ import queue
 import socket
 import json
 
-from util import insert_info, insert_data
+from util import insert_info, insert_data, get_temperature_data, get_humidity_data
 from util import logging, Datum
 
 
@@ -22,11 +22,11 @@ class Server:
         self.start()
 
     def start(self):
-        # self.gateway_listener.start()
+        self.gateway_listener.start()
         self.http_listener.start()
         self.http_handler.start()
-        # self.storer.start()
-        # self.logger_thread.start()
+        self.storer.start()
+        self.logger_thread.start()
 
     def create_gateway_socket(self, host, port):
         self.gateway_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -78,17 +78,36 @@ class Server:
 
     def listen_http(self):
         while True:
-            connection, (_, _) = self.http_socket.accept()
+            connection, address = self.http_socket.accept()
             if connection is not None:
-                self.client_queue.put({"client_socket": connection})
+                self.client_queue.put({"client_socket": connection, "address": address})
 
     def handle_http(self):
         while True:
             data = self.client_queue.get()
             client_socket = data.get("client_socket", None)
+            address = data.get("address", None)
             message = client_socket.recv(1024).decode("utf-8")
-            extracted = self.extract_path(message)
-            print(extracted)
+            path = self.extract_path(message)
+            if path == "/temperature":
+                temperature_list = get_temperature_data()
+                html = "<h1>Temperature Data</h1>"
+                for temperature in temperature_list:
+                    html += f"<p>{temperature}</p>"
+            elif path == "/humidity":
+                humidity_list = get_humidity_data()
+                html = "<h1>Humidity Data</h1>"
+                for humidity in humidity_list:
+                    html += f"<p>{humidity}</p>"
+            else:
+                html = "<h1>Invalid request</h1>"
+
+            status_line = "HTTP/1.1 200 OK\r\n"
+            content_type = "text/html; charset=utf-8"
+            content_length = len(html)
+            headers = f"Content-Type: {content_type}\r\nContent-Length: {content_length}\r\n\r\n"
+            response = status_line + headers + html
+            client_socket.sendall(response.encode())
 
     def extract_path(self, request):
         request_lines = request.split(" ")
